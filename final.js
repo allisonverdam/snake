@@ -15,9 +15,11 @@ window.requestAnimFrame = (function(){
     nameP1 = window.prompt("Digite seu nome");
 
     hiScore = 0;
+    hiScoreName = '';
     var hiScoreRef = firebase.database().ref('hiScore');
     hiScoreRef.on('value', function(snapshot) {
         hiScore = snapshot.val().value;
+	hiScoreName = snapshot.val().name;
     });
 
     var canvas = document.getElementById('snakeCanvas'),
@@ -315,13 +317,16 @@ window.requestAnimFrame = (function(){
 
         if (score > hiScore) {
             hiScore = score;
+	    hiScoreName = nameP1;
             localStorage.hiScore = hiScore;
+	    localStorage.hiScoreName = hiScoreName;
             firebase.database().ref('hiScore').set({name: nameP1, value: score});
         }
 
         apple.draw();
         draw.text('Score: '+score, 20, 20, 12, 'black');
-        draw.text('Hi: '+hiScore, 260, 20, 12, 'black');
+        draw.text('Hi points: '+hiScore, 260, 20, 12, 'black');
+	draw.text('Hi name: '+hiScoreName, 260, 30, 12, 'black');
 
         if (p1.dead === true) {
             time = new Date().getTime() * 0.002;
