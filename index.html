@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en" manifest="cache.manifest">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=320, height=480, user-scalable=no, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="apple-touch-startup-image" href="iphonestartup.png" />
+    <title>Snake Game - now with extra bling!</title>
+
+    <style type="text/css">
+        body {
+            background: #000;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #snakeGame {
+            display: block;
+            margin: 0 auto;
+            background: #000;
+            position: relative;
+        }
+
+        #snakeGame canvas {
+            display: block;
+            background: #eee8aa 0 0 no-repeat;
+        }
+
+        *{
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+    </style>
+    <link href='http://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet' type='text/css'>
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAc_kLfiYdCDZ-mb2yZg4O3Kj4wqVvAfaM",
+        authDomain: "jogo-cobrinha-irada.firebaseapp.com",
+        databaseURL: "https://jogo-cobrinha-irada.firebaseio.com",
+        projectId: "jogo-cobrinha-irada",
+        storageBucket: "jogo-cobrinha-irada.appspot.com",
+        messagingSenderId: "833233879822"
+    };
+    firebase.initializeApp(config);
+    </script>
+</head>
+
+<body>
+    <div id="snakeGame">
+        <canvas id="snakeCanvas"></canvas>
+    </div>
+
+    <script type="text/javascript" src="final.js"> </script>
+
+</body>
+
+</html>
