@@ -16,10 +16,18 @@ window.requestAnimFrame = (function(){
 
     hiScore = 0;
     hiScoreName = '';
-    var hiScoreRef = firebase.database().ref('hiScore');
+    background = '';
+    const hiScoreRef = firebase.database().ref('hiScore');
+    const backGroundRef = firebase.database().ref('backGround');
+
     hiScoreRef.on('value', function(snapshot) {
         hiScore = snapshot.val().value;
-	hiScoreName = snapshot.val().name;
+	    hiScoreName = snapshot.val().name;
+    });
+
+    backGroundRef.on('value', function(snapshot) {
+        background = snapshot.val();
+        canvas.style = `display: block; background: #eee8aa url(${snapshot.val()}) 0 0;`;
     });
 
     var canvas = document.getElementById('snakeCanvas'),
